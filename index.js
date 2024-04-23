@@ -41,10 +41,13 @@ async function fetchInformation() {
   //   user.isMarried = false;
   //   await user.save();
 
-  const user = await User.findByIdAndUpdate("662753bbc8030ebd88e5d023", {age: 25, isMarried: true}, {new: true, runValidators: true});
-  await user.save();
+  //   const user = await User.findByIdAndUpdate("662753bbc8030ebd88e5d023", {age: 25, isMarried: true}, {new: true, runValidators: true});
+  //   await user.save();
 
-  console.log(user);
+  //   await User.deleteOne({ _id: "662753bbc8030ebd88e5d023"})
+  await User.deleteMany({ isMarried: false });
+
+  //   console.log(user);
 }
 fetchInformation();
 
