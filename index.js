@@ -36,9 +36,14 @@ async function fetchInformation() {
   // const users = await User.find({salary: {$in: [50000, 50000000, 25000]}});
   // const users = await User.find().and([{ isMarried: true }, { age: 30 }]);
   // const users = await User.find().or([{age: {$gt: 40}}, {isMarried: false}]).select("name").sort("name");
-  const user = await User.findById("662753bbc8030ebd88e5d023");
-  user.isMarried = false;
+
+  //   const user = await User.findById("662753bbc8030ebd88e5d023");
+  //   user.isMarried = false;
+  //   await user.save();
+
+  const user = await User.findByIdAndUpdate("662753bbc8030ebd88e5d023", {age: 25, isMarried: true}, {new: true, runValidators: true});
   await user.save();
+
   console.log(user);
 }
 fetchInformation();
