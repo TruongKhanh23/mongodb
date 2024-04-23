@@ -16,10 +16,19 @@ const userSchema = new mongoose.Schema({
 });
 const User = mongoose.model("User", userSchema);
 
+// Comparision Operator
+// gt  - greater
+// gte - greter equal
+// lt  - less than
+// lte - less than equal
+// ne  - not equal
+// in  - include
+
 async function fetchInformation(){
     // const users = await User.findById("6027d1fd8d4a543a2049d1a0");
     // const users = await User.find({isMarried: false}).select("name salary").sort("-salary").limit(1);
-    const users = await User.find({isMarried: false}).countDocuments();
+    // const users = await User.find({isMarried: false}).countDocuments();
+    const users = await User.find({salary: {$in: [50000, 50000000, 25000]}});
     console.log(users);
 }
 fetchInformation();
