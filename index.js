@@ -8,10 +8,23 @@ mongoose
 // Document, Collection, Database
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
-    isMarried: Boolean,
-    salary: Number,
-    gender: String,
-})
-const User = mongoose.model("User", userSchema)
+  name: String,
+  age: Number,
+  isMarried: Boolean,
+  salary: Number,
+  gender: String,
+});
+const User = mongoose.model("User", userSchema);
+
+async function storeInformation() {
+  const user = new User({
+    name: "Truong Khanh",
+    age: 24,
+    isMarried: true,
+    salary: 50000000,
+    gender: "Male",
+  });
+  await user.save();
+  console.log(user);
+}
+storeInformation();
