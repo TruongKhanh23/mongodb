@@ -24,12 +24,18 @@ const User = mongoose.model("User", userSchema);
 // ne  - not equal
 // in  - include
 
+// Problem I will solve
+// Find those users whose age is greater than 40 or thay are unmarried
+// Find Only name
+// Shorted them by name
+
 async function fetchInformation() {
   // const users = await User.findById("6027d1fd8d4a543a2049d1a0");
   // const users = await User.find({isMarried: false}).select("name salary").sort("-salary").limit(1);
   // const users = await User.find({isMarried: false}).countDocuments();
   // const users = await User.find({salary: {$in: [50000, 50000000, 25000]}});
-  const users = await User.find().and([{ isMarried: true }, { age: 30 }]);
+  // const users = await User.find().and([{ isMarried: true }, { age: 30 }]);
+  const users = await User.find().or([{age: {$gt: 40}}, {isMarried: false}]).select("name").sort("name");
   console.log(users);
 }
 fetchInformation();
